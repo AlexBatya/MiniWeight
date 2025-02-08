@@ -1,0 +1,16 @@
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.GeneratedMSBuildEditorConfig.editorconfig
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.AssemblyInfoInputs.cache
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.AssemblyInfo.cs
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.csproj.CoreCompileInputs.cache
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.genruntimeconfig.cache
+E:\work\desktop\tablo\build\net9.0-windows\Terminal.exe
+E:\work\desktop\tablo\build\net9.0-windows\Terminal.deps.json
+E:\work\desktop\tablo\build\net9.0-windows\Terminal.runtimeconfig.json
+E:\work\desktop\tablo\build\net9.0-windows\Terminal.dll
+E:\work\desktop\tablo\build\net9.0-windows\Terminal.pdb
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\Terminal.dll
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\refint\Terminal.dll
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\Terminal.pdb
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\ref\Terminal.dll
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.csproj.AssemblyReference.cache
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.csproj.Up2Date
