@@ -13,7 +13,7 @@ namespace MyApp.Views {
       private readonly WeightController _controller;
 
       public MainForm() {
-        _controller = new WeightController("COM5", 9600);
+        _controller = new WeightController("COM3", 9600);
 
         _menuBar = new MenuBar(); 
         _keyController = new KeyController(this);

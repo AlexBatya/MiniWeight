@@ -2,16 +2,21 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Text.Json;
+using MyApp.Models;
 
 namespace MyApp.Views {
   partial class Tablo {
     private PrivateFontCollection fonts = new PrivateFontCollection();
 
     private void InitializeComponent() {
+      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
+      
       this.weightLabel = new Label();
       this.SuspendLayout();
 
-      string fontPath = "C:/Users/kegla/Desktop/AlexBatya/MiniWeight/src/Assets/Fonts/digital_7.ttf"; // Укажите путь к файлу шрифта в проекте
+      string fontPath = data.FontTablo; // Укажите путь к файлу шрифта в проекте
       fonts.AddFontFile(fontPath);
       Font digitalFont = new Font(fonts.Families[0], 64, FontStyle.Bold);
 

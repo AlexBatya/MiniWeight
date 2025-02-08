@@ -1,12 +1,17 @@
 using System;
 using System.Windows.Forms;
+using System.Text.Json;
+using MyApp.Models;
 
 namespace MyApp.Views {
   partial class Transportation {
     
     private void InitializeTitle(){
+      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
+
       this.Text = "Терминал - Колебровка"; // Заголовок окна
-      this.Size = new Size(400, 400); // Размер окна
+      this.Size = new Size(900, 400); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна
@@ -15,7 +20,7 @@ namespace MyApp.Views {
       this.FormBorderStyle = FormBorderStyle.FixedSingle; // Запрещает изменение размера
 
       try {
-        this.Icon = new Icon("E:/work/desktop/tablo/src/Assets/Img/icon.ico"); // Устанавливаем иконку
+        this.Icon = new Icon(data.Icon); // Устанавливаем иконку
       } catch {
         Console.WriteLine("Иконка не найдена, используется стандартная.");
       }
@@ -54,7 +59,7 @@ namespace MyApp.Views {
       tableLayoutPanel.Controls.Add(_inputWeight, 0, 4); // Кнопка на основной ячейке
 
       tableLayoutPanel.Controls.Add(_transpSend, 0, 5); // Кнопка на основной ячейке
-      tableLayoutPanel.SetColumnSpan(_transpSend, 2);
+      tableLayoutPanel.Controls.Add(_transpClose, 1, 5); // Кнопка на основной ячейке
 
       this.Controls.Add(tableLayoutPanel);
     }

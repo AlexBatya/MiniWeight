@@ -1,12 +1,26 @@
 using System;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Text.Json;
+using MyApp.Models;
 
 namespace MyApp.Views {
   partial class Input {
+    private PrivateFontCollection fonts = new PrivateFontCollection();
 
     private void InitializeTitle(){
+      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
+
       this.Width = 900;
       this.Height = 50;
+
+      string fontPath = data.FontText; // Укажите путь к файлу шрифта в проекте
+      fonts.AddFontFile(fontPath);
+      Font digitalFont = new Font(fonts.Families[0], 12, FontStyle.Regular);
+
+      this.Font = digitalFont;
 
       this.ForeColor = System.Drawing.Color.Black; // Черный текст
       this.BackColor = System.Drawing.Color.White; // Белый фон

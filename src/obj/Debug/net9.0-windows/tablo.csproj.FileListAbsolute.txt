@@ -31,3 +31,4 @@ C:\Users\kegla\Desktop\AlexBatya\MiniWeight\build\net9.0-windows\terminal.pdb
 C:\Users\kegla\Desktop\AlexBatya\MiniWeight\src\obj\Debug\net9.0-windows\tablo.csproj.Up2Date
 C:\Users\kegla\Desktop\AlexBatya\MiniWeight\src\obj\Debug\net9.0-windows\tablo.genruntimeconfig.cache
 C:\Users\kegla\Desktop\AlexBatya\MiniWeight\src\obj\Debug\net9.0-windows\ref\terminal.dll
+E:\work\desktop\tablo\src\obj\Debug\net9.0-windows\tablo.sourcelink.json

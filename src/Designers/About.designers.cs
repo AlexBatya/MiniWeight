@@ -1,11 +1,16 @@
 using System;
 using System.Windows.Forms;
+using System.Text.Json;
+using MyApp.Models;
 
 namespace MyApp.Views {
   partial class About  {
     
 
     private void InitializeTitle(){
+      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
+
       this.Text = "Терминал - О программе"; // Заголовок окна
       this.Size = new Size(300, 300); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
@@ -16,7 +21,7 @@ namespace MyApp.Views {
       this.FormBorderStyle = FormBorderStyle.FixedSingle; // Запрещает изменение размера
 
       try {
-        this.Icon = new Icon("E:/work/desktop/tablo/src/Assets/Img/icon.ico"); // Устанавливаем иконку
+        this.Icon = new Icon(data.Icon); // Устанавливаем иконку
       } catch {
         Console.WriteLine("Иконка не найдена, используется стандартная.");
       }
