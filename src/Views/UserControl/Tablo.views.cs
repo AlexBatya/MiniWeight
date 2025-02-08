@@ -18,5 +18,9 @@ namespace MyApp.Views {
         weightLabel.Text = newWeight; // Обновляем текст напрямую
     }
 
+    public string GetWeight(){
+      return weightLabel.Text;
+    }
+
   }
 }

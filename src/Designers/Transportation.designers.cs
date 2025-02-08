@@ -50,8 +50,8 @@ namespace MyApp.Views {
       // Добавление элементов в ячейки
       tableLayoutPanel.Controls.Add(_inputAll, 0, 1); // Кнопка на основной ячейке
       tableLayoutPanel.Controls.Add(_inputZiro, 1, 1); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_transpZiro, 0, 2); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_transpAll, 1, 2); // Кнопка на основной ячейке
+      tableLayoutPanel.Controls.Add(_transpAll, 0, 2); // Кнопка на основной ячейке
+      tableLayoutPanel.Controls.Add(_transpZiro, 1, 2); // Кнопка на основной ячейке
 
       tableLayoutPanel.Controls.Add(_customLabel, 0, 3); // Кнопка на основной ячейке
       tableLayoutPanel.SetColumnSpan(_customLabel, 2);
