@@ -8,7 +8,7 @@ namespace MyApp.Models {
     public string SomeSetting { get; set; }
 
     public ConfigData() {
-      PortName = "COM1";
+      PortName = "COM5";
       BaudRate = 9600;
       SomeSetting = "DefaultSetting";
     }

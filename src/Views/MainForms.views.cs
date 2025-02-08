@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using MyApp.Controllers;
 using System.Threading;
 using System.Threading.Tasks;
+using MyApp.Services;
 
 namespace MyApp.Views {
     public partial class MainForm: Form {
@@ -17,7 +18,6 @@ namespace MyApp.Views {
       private readonly WeightController _controller;
 
       public MainForm() {
-        _controller = new WeightController("COM5", 9600);
 
         _menuBar = new MenuBar(); 
         _keyController = new KeyController(this);
@@ -26,6 +26,10 @@ namespace MyApp.Views {
         _closeButton = new MainButton("Отключить", ClosePort); 
         _statusCOM = new CustomLabel("Статус COM: OK");
         _tablo = new Tablo();
+
+
+        var config = ConfigManager.LoadConfig();
+        _controller = new WeightController(config.PortName, config.BaudRate);
 
         _controller.Open();
 
