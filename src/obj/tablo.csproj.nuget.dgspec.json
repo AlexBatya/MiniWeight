@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\work\\desktop\\tablo\\src\\tablo.csproj": {}
+    "C:\\Users\\kegla\\Desktop\\AlexBatya\\MiniWeight\\src\\tablo.csproj": {}
   },
   "projects": {
-    "E:\\work\\desktop\\tablo\\src\\tablo.csproj": {
+    "C:\\Users\\kegla\\Desktop\\AlexBatya\\MiniWeight\\src\\tablo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\work\\desktop\\tablo\\src\\tablo.csproj",
+        "projectUniqueName": "C:\\Users\\kegla\\Desktop\\AlexBatya\\MiniWeight\\src\\tablo.csproj",
         "projectName": "terminal",
-        "projectPath": "E:\\work\\desktop\\tablo\\src\\tablo.csproj",
-        "packagesPath": "C:\\Users\\alex2\\.nuget\\packages\\",
-        "outputPath": "E:\\work\\desktop\\tablo\\src\\obj\\",
+        "projectPath": "C:\\Users\\kegla\\Desktop\\AlexBatya\\MiniWeight\\src\\tablo.csproj",
+        "packagesPath": "C:\\Users\\kegla\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kegla\\Desktop\\AlexBatya\\MiniWeight\\src\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alex2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\kegla\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"

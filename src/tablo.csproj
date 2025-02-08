@@ -8,7 +8,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <OutputPath>../build</OutputPath>
-    <ApplicationIcon>E:/work/desktop/tablo/src/Assets/Img/icon.ico</ApplicationIcon>
+    <ApplicationIcon>C:/Users/kegla/Desktop/AlexBatya/MiniWeight/src/Assets/Img/icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>

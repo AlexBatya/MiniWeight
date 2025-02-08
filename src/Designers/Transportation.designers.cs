@@ -6,7 +6,7 @@ namespace MyApp.Views {
     
     private void InitializeTitle(){
       this.Text = "Терминал - Колебровка"; // Заголовок окна
-      this.Size = new Size(900, 400); // Размер окна
+      this.Size = new Size(400, 400); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна
@@ -32,14 +32,13 @@ namespace MyApp.Views {
       };
 
       // Настройка столбцов
-      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F)); // Используем 50% для каждой колонки
-      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F)); // Используем 50% для каждой колонки
-      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F)); // Используем 50% для каждой колонки
+      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F)); // Используем 50% для каждой колонки
+      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F)); // Используем 50% для каждой колонки
 
       // Настройка строк
       tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Размер первой строки 100px
       tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F)); // Основная строка будет занимать весь оставшийся экран
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Еще одна строка снизу
+      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F)); // Еще одна строка снизу
       tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Еще одна строка снизу
       tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Еще одна строка снизу
 
@@ -48,8 +47,14 @@ namespace MyApp.Views {
       tableLayoutPanel.Controls.Add(_inputZiro, 1, 1); // Кнопка на основной ячейке
       tableLayoutPanel.Controls.Add(_transpZiro, 0, 2); // Кнопка на основной ячейке
       tableLayoutPanel.Controls.Add(_transpAll, 1, 2); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_inputWeight, 0, 3); // Кнопка на основной ячейке
-      tableLayoutPanel.SetColumnSpan(_inputWeight, 2);
+
+      tableLayoutPanel.Controls.Add(_customLabel, 0, 3); // Кнопка на основной ячейке
+      tableLayoutPanel.SetColumnSpan(_customLabel, 2);
+
+      tableLayoutPanel.Controls.Add(_inputWeight, 0, 4); // Кнопка на основной ячейке
+
+      tableLayoutPanel.Controls.Add(_transpSend, 0, 5); // Кнопка на основной ячейке
+      tableLayoutPanel.SetColumnSpan(_transpSend, 2);
 
       this.Controls.Add(tableLayoutPanel);
     }

@@ -11,7 +11,7 @@ namespace MyApp.Views {
     }
 
     public void UpdateWeight(int newWeight) {
-      weightLabel.Text = newWeight.ToString() + " кг"; // Преобразуем int в string и обновляем
+      weightLabel.Text = newWeight.ToString() + " kg"; // Преобразуем int в string и обновляем
     }
 
     public void UpdateWeight(string newWeight) {

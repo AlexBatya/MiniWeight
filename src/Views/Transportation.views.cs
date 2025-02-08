@@ -7,17 +7,21 @@ namespace MyApp.Views {
     private readonly KeyController _keyController;
     private readonly MainButton _transpZiro;
     private readonly MainButton _transpAll;
+    private readonly MainButton _transpSend;
     private readonly Input _inputZiro;
     private readonly Input _inputAll;
     private readonly Input _inputWeight;
+    private readonly CustomLabel _customLabel;
 
     public Transportation(){
       _keyController = new KeyController(this);
-      _transpZiro = new MainButton("Колебровка нуля"); 
-      _transpAll= new MainButton("Колебровка шкалы"); 
       _inputAll = new Input("0"); 
       _inputZiro = new Input("0"); 
       _inputWeight = new Input("0");
+      _transpZiro = new MainButton("Колебровка нуля"); 
+      _transpAll= new MainButton("Колебровка шкалы"); 
+      _transpSend= new MainButton("Отправить"); 
+      _customLabel = new CustomLabel("Колебровочный вес, кг");
 
       InitializeTitle();
       InitializePosition();
