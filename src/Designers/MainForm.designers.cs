@@ -6,7 +6,7 @@ namespace MyApp.Views {
 
     private void InitializeTitle() {
       this.Text = "Терминал - Главное окно"; // Заголовок окна
-      this.Size = new Size(800, 500); // Размер окна
+      this.Size = new Size(800, 400); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна

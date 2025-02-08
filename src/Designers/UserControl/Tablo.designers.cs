@@ -13,7 +13,7 @@ namespace MyApp.Views {
 
       string fontPath = "C:/Users/kegla/Desktop/AlexBatya/MiniWeight/src/Assets/Fonts/digital_7.ttf"; // Укажите путь к файлу шрифта в проекте
       fonts.AddFontFile(fontPath);
-      Font digitalFont = new Font(fonts.Families[0], 48, FontStyle.Bold);
+      Font digitalFont = new Font(fonts.Families[0], 64, FontStyle.Bold);
 
       // Настройки отображения веса
       this.weightLabel.Dock = DockStyle.Fill;
