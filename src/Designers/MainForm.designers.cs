@@ -59,6 +59,8 @@ namespace MyApp.Views {
       tableLayoutPanel.Controls.Add(_mainButton, 0, 3); // Кнопка на основной ячейке
       tableLayoutPanel.SetColumnSpan(_mainButton, 2);
 
+      tableLayoutPanel.Controls.Add(_statusCOM, 0, 4); // Кнопка на основной ячейке
+
       this.Controls.Add(tableLayoutPanel);
     }
   }

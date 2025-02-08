@@ -59,16 +59,26 @@ namespace MyApp.Controllers {
     }
 
     // Асинхронный метод для постоянного опроса и обновления данных
-    public async Task StartPollingAsync(Action<int?> updateMethod) {
-      while (true) {
-        // Отправляем запрос и получаем ответ
-        int? weight = RequestWeight();
-        updateMethod(weight);  // Обновляем данные через переданный метод
+    
+    
+    public async Task StartPollingAsync(Action<int?> updateMethod, CancellationToken token) {
+      try {
+        while (!token.IsCancellationRequested) {
+          if (serialPort.IsOpen) {  // Проверяем, открыт ли порт
+            int? weight = RequestWeight();
+            updateMethod(weight);
+          }
 
-        // Задержка 50 мс (не блокирует поток)
-        await Task.Delay(50);
+          await Task.Delay(50, token); // Задержка с обработкой отмены
+        }
+      } catch (OperationCanceledException) {
+        Console.WriteLine("Опрос остановлен.");
+      } catch (Exception ex) {
+        Console.WriteLine($"Ошибка в StartPollingAsync: {ex.Message}");
       }
     }
+
+
 
     public void Tare() {
     if (serialPort.IsOpen) {

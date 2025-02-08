@@ -26,7 +26,7 @@ namespace MyApp.Views {
       this.weightLabel.Font = digitalFont;
       this.weightLabel.ForeColor = Color.Lime;
       this.weightLabel.BackColor = Color.Black;
-      this.weightLabel.Text = "0000.00 kg";
+      this.weightLabel.Text = "STOP";
 
       // Добавляем label на UserControl
       this.Controls.Add(this.weightLabel);

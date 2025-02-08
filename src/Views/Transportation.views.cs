@@ -18,7 +18,7 @@ namespace MyApp.Views {
       _keyController = new KeyController(this);
       _inputAll = new Input("0"); 
       _inputZiro = new Input("0"); 
-      _inputWeight = new Input("0");
+      _inputWeight = new Input("");
       _transpZiro = new MainButton("Колебровка нуля"); 
       _transpAll= new MainButton("Колебровка шкалы"); 
       _transpSend = new MainButton("Отправить"); 
