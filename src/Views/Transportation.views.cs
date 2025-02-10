@@ -36,13 +36,13 @@ namespace MyApp.Views {
 
     private void CulculateAll(){
       var tablo = new Tablo();
-      Console.WriteLine(tablo.GetWeight());
-      float? k = float.Parse(_inputWeight.Text) / 20;
+      Console.WriteLine(tablo.weight);
+      float? k = float.Parse(_inputWeight.Text) / _controller.RequestWeight();
       _inputAll.UpdateInputText(k.ToString());; 
     }
 
     private void CulculateZiro(){
-
+      
     }
 
   }

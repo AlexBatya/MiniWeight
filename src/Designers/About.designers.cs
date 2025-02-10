@@ -8,7 +8,7 @@ namespace MyApp.Views {
     
 
     private void InitializeTitle(){
-      string jsonText = File.ReadAllText("C:/Users/kegla/Desktop/AlexBatya/MiniWeight/src/settings.json"); // Читаем файл
+      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
       var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
 
       this.Text = "Терминал - О программе"; // Заголовок окна

@@ -1,11 +1,13 @@
 using System;
 using System.IO.Ports;
 using System.Text;
-using System.Threading.Tasks; // Для async/await
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace MyApp.Controllers {
   public class WeightController {
     private SerialPort serialPort;
+    public event Action<bool> PortStateChanged; // Событие для уведомления об изменении состояния порта
 
     public WeightController(string portName, int baudRate) {
       serialPort = new SerialPort(portName, baudRate) {
@@ -19,19 +21,44 @@ namespace MyApp.Controllers {
     }
 
     public void Open() {
-      try {
-        serialPort.Open();
-        Console.WriteLine("COM-порт открыт.");
-      } catch (Exception ex) {
-        Console.WriteLine($"Ошибка открытия порта: {ex.Message}");
+      if (serialPort == null)
+        return;
+
+      if (!serialPort.IsOpen) {
+        try {
+          serialPort.Open();
+          Console.WriteLine("COM-порт открыт.");
+          PortStateChanged?.Invoke(true); // Уведомляем об открытии порта
+        } 
+        catch (Exception ex) {
+          Console.WriteLine($"Ошибка открытия порта: {ex.Message}");
+        }
+      } 
+      else {
+        Console.WriteLine("COM-порт уже открыт.");
       }
     }
 
     public void Close() {
+      if (serialPort == null)
+        return;
+
       if (serialPort.IsOpen) {
-        serialPort.Close();
-        Console.WriteLine("COM-порт закрыт.");
+        try {
+          serialPort.Close();
+          Console.WriteLine("COM-порт закрыт.");
+          PortStateChanged?.Invoke(false); // Уведомляем о закрытии порта
+        } catch (Exception ex) {
+          Console.WriteLine($"Ошибка закрытия порта: {ex.Message}");
+        }
+      } 
+      else {
+        Console.WriteLine("COM-порт уже закрыт.");
       }
+    }
+
+    public bool IsPortOpen() {
+      return serialPort != null && serialPort.IsOpen;
     }
 
     // Метод, который отправляет запрос и возвращает ответ
@@ -59,8 +86,6 @@ namespace MyApp.Controllers {
     }
 
     // Асинхронный метод для постоянного опроса и обновления данных
-    
-    
     public async Task StartPollingAsync(Action<int?> updateMethod, CancellationToken token) {
       try {
         while (!token.IsCancellationRequested) {
@@ -78,20 +103,17 @@ namespace MyApp.Controllers {
       }
     }
 
-
-
     public void Tare() {
-    if (serialPort.IsOpen) {
-        try {
-            serialPort.WriteLine("TARE"); // Отправляем команду обнуления
-            Console.WriteLine("Команда TARE отправлена.");
-        } catch (Exception ex) {
-            Console.WriteLine($"Ошибка отправки команды TARE: {ex.Message}");
-        }
-    } else {
-        Console.WriteLine("Ошибка: COM-порт не открыт.");
+      if (serialPort.IsOpen) {
+          try {
+              serialPort.WriteLine("TARE"); // Отправляем команду обнуления
+              Console.WriteLine("Команда TARE отправлена.");
+          } catch (Exception ex) {
+              Console.WriteLine($"Ошибка отправки команды TARE: {ex.Message}");
+          }
+      } else {
+          Console.WriteLine("Ошибка: COM-порт не открыт.");
+      }
     }
-}
   }
 }
-
