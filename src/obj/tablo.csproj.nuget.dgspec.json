@@ -1,25 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "E:\\work\\desktop\\tablo\\src\\tablo.csproj": {}
+    "C:\\Users\\user\\Desktop\\work\\programs\\desktop\\MiniWeight\\src\\tablo.csproj": {}
   },
   "projects": {
-    "E:\\work\\desktop\\tablo\\src\\tablo.csproj": {
+    "C:\\Users\\user\\Desktop\\work\\programs\\desktop\\MiniWeight\\src\\tablo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\work\\desktop\\tablo\\src\\tablo.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\work\\programs\\desktop\\MiniWeight\\src\\tablo.csproj",
         "projectName": "terminal",
-        "projectPath": "E:\\work\\desktop\\tablo\\src\\tablo.csproj",
-        "packagesPath": "C:\\Users\\alex2\\.nuget\\packages\\",
-        "outputPath": "E:\\work\\desktop\\tablo\\src\\obj\\",
+        "projectPath": "C:\\Users\\user\\Desktop\\work\\programs\\desktop\\MiniWeight\\src\\tablo.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\work\\programs\\desktop\\MiniWeight\\src\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\alex2\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net9.0-windows"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -36,7 +42,7 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         },
         "SdkAnalysisLevel": "9.0.100"
       },
@@ -72,7 +78,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

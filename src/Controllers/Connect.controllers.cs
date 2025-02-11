@@ -115,5 +115,22 @@ namespace MyApp.Controllers {
           Console.WriteLine("Ошибка: COM-порт не открыт.");
       }
     }
+
+
+    public void Calibrate(float calibrationFactor) {
+      if (serialPort == null || !serialPort.IsOpen) {
+        Console.WriteLine("Ошибка: COM-порт не открыт.");
+        return;
+      }
+
+      string command = $"CAL {calibrationFactor.ToString("F10")}\r\n"; // Отправляем команду с двумя знаками после запятой
+      try {
+        serialPort.WriteLine(command);
+        Console.WriteLine($"Отправлена команда калибровки: {command}");
+      }
+      catch (Exception ex) {
+        Console.WriteLine($"Ошибка при отправке команды: {ex.Message}");
+      }
+    }
   }
 }

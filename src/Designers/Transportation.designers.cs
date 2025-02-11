@@ -7,12 +7,11 @@ namespace MyApp.Views {
   partial class Transportation {
     
     private void InitializeTitle(){
-      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      string jsonText = File.ReadAllText("C:/Users/user/Desktop/work/programs/desktop/MiniWeight/src/settings.json"); // Читаем файл
       var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
 
       this.Text = "Терминал - Колебровка"; // Заголовок окна
-      this.Size = new Size(900, 400); // Размер окна
-      this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
+      this.Size = new Size(600, 400); // Размер окна
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна
       this.MaximizeBox = false; // Запрещает разворачивание окна

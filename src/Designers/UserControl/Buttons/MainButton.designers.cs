@@ -10,7 +10,7 @@ namespace MyApp.Views {
     private PrivateFontCollection fonts = new PrivateFontCollection();
     
     private void InitializeTitle(){
-      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      string jsonText = File.ReadAllText("C:/Users/user/Desktop/work/programs/desktop/MiniWeight/src/settings.json"); // Читаем файл
       var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
 
       this.Dock = DockStyle.Top;

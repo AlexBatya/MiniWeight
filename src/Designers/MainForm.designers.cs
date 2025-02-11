@@ -7,11 +7,11 @@ namespace MyApp.Views {
   partial class MainForm {
 
     private void InitializeTitle() {
-      string jsonText = File.ReadAllText("E:/work/desktop/tablo/src/settings.json"); // Читаем файл
+      string jsonText = File.ReadAllText("C:/Users/user/Desktop/work/programs/desktop/MiniWeight/src/settings.json"); // Читаем файл
       var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
 
       this.Text = "Терминал - Главное окно"; // Заголовок окна
-      this.Size = new Size(800, 400); // Размер окна
+      this.Size = new Size(500, 400); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна

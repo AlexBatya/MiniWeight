@@ -5,8 +5,10 @@ using MyApp.Controllers;
 namespace MyApp.Views {
   public class MenuBar: UserControl {
     private readonly MainController _mainController;
+    private readonly MainForm _mainForm;
     
-    public MenuBar(){
+    public MenuBar(MainForm mainForm){
+      _mainForm = mainForm;
       _mainController = new MainController(this);
 
       var menuStrip = new MenuStrip {
@@ -17,10 +19,16 @@ namespace MyApp.Views {
       var exitMenuItem = new ToolStripMenuItem("Выход", null, _mainController.AppExit){
         ShortcutKeys = Keys.Control | Keys.W
       };
-      var settingsItem = new ToolStripMenuItem("Настройки", null, _mainController.OpenSettings){
+      var settingsItem = new ToolStripMenuItem("Настройки", null, (e, sender) => {
+        var settings = new Settings(_mainForm); 
+        settings.Show();
+      }){
         ShortcutKeys = Keys.Control | Keys.S
       };
-      var transportation = new ToolStripMenuItem("Колебровка", null, _mainController.OpenTransportation){
+      var transportation = new ToolStripMenuItem("Колебровка", null, (e, sender) => {
+        var transportation = new Transportation(_mainForm); 
+        transportation.Show();
+      }){
         ShortcutKeys = Keys.Control | Keys.K
       };
 
@@ -55,4 +63,5 @@ namespace MyApp.Views {
     }
 
   }
+
 }

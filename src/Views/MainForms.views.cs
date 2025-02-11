@@ -23,7 +23,6 @@ namespace MyApp.Views {
       _mainButton = new MainButton("Обнулить", Tare); 
       _openButton = new MainButton("Включить", OpenPort); 
       _closeButton = new MainButton("Отключить", ClosePort); 
-      _statusCOM = new CustomLabel("Статус COM: OK");
       _tablo = new Tablo();
 
 
@@ -32,10 +31,21 @@ namespace MyApp.Views {
 
       _controller.Open();
 
-      _menuBar = new MenuBar(); 
+      _menuBar = new MenuBar(this); 
+
+      _statusCOM = new CustomLabel(StatusCOM());
 
       InitializePosition();
       InitializeTitle();
+    }
+
+    private string StatusCOM(){
+      if(_controller.IsPortOpen()){
+        return "Статус COM: OK";
+      }
+      else {
+        return "Статус COM: НЕТ СВЯЗИ";
+      }
     }
 
     // Обработчик события получения веса
@@ -63,6 +73,14 @@ namespace MyApp.Views {
 
     public WeightController GetController(){
       return _controller; 
+    }
+
+    public void CloseCom(){
+      _controller.Close();
+    }
+
+    public void OpenCom(){
+      _controller.Open();
     }
 
     public async void OpenPort(object sender, EventArgs e) {

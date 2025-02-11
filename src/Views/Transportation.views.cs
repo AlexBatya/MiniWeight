@@ -5,6 +5,8 @@ using MyApp.Services;
 
 namespace MyApp.Views {
   public partial class Transportation: Form {
+    private readonly MainForm? _mainForm;
+
     private readonly KeyController _keyController;
     private readonly MainButton _transpZiro;
     private readonly MainButton _transpAll;
@@ -16,18 +18,32 @@ namespace MyApp.Views {
     private readonly CustomLabel _customLabel;
     private readonly WeightController _controller;
 
-    public Transportation(){
+    public Transportation(MainForm mainForm){
+      var config = ConfigManager.LoadConfig();
+
+      _mainForm = mainForm;
       _keyController = new KeyController(this);
-      _inputAll = new Input("0"); 
+      _inputAll = new Input(config.TransportationAll.ToString()); 
       _inputZiro = new Input("0"); 
-      _inputWeight = new Input("");
+      _inputWeight = new Input(config.TransportationWeight.ToString());
       _transpZiro = new MainButton("Колебровка нуля"); 
-      _transpAll= new MainButton("Колебровка шкалы", (e, sender) => {CulculateAll();}); 
-      _transpSend = new MainButton("Отправить"); 
+
+      _transpAll= new MainButton("Колебровка шкалы", (e, sender) => {
+        CulculateAll();
+        _mainForm.GetController().Calibrate(float.Parse("1"));
+        _mainForm.GetController().Calibrate(float.Parse(_inputAll.Text));
+      }); 
+
+      _transpSend = new MainButton("Отправить", (e, sender) => {
+        ConfigManager.UpdateConfig(config => {
+          config.TransportationAll = float.Parse(_inputAll.Text);  // Пример нового BaudRate
+          config.TransportationWeight = float.Parse(_inputWeight.Text);  // Пример нового BaudRate
+        });
+      }); 
+
       _transpClose = new MainButton("Закрыть", (e, sender) => {this.Close();});
       _customLabel = new CustomLabel("Колебровочный вес, кг");
 
-      var config = ConfigManager.LoadConfig();
       _controller = new WeightController(config.PortName, config.BaudRate);
 
       InitializeTitle();
@@ -35,10 +51,20 @@ namespace MyApp.Views {
     }
 
     private void CulculateAll(){
-      var tablo = new Tablo();
-      Console.WriteLine(tablo.weight);
-      float? k = float.Parse(_inputWeight.Text) / _controller.RequestWeight();
-      _inputAll.UpdateInputText(k.ToString());; 
+      if (float.TryParse(_inputWeight.Text, out float inputWeight)) {
+        int? requestedWeight = _mainForm.GetController().RequestWeight();
+
+        if (requestedWeight.HasValue && requestedWeight.Value != 0) {
+          float k = inputWeight / requestedWeight.Value;
+          _inputAll.UpdateInputText(k.ToString("F10")); // Округление до 2 знаков
+        }
+        else {
+          _inputAll.UpdateInputText("Ошибка: деление на ноль или нет данных");
+        }
+      }
+      else {
+        _inputAll.UpdateInputText("Ошибка: некорректный ввод");
+      } 
     }
 
     private void CulculateZiro(){

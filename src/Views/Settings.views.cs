@@ -5,6 +5,7 @@ using MyApp.Services;
 
 namespace MyApp.Views {
   public partial class Settings: Form {
+    private readonly MainForm? _mainForm;
     private readonly ButtonController? _buttonController;
     private readonly MainController? _mainController;
     private readonly KeyController? _keyController;
@@ -15,8 +16,8 @@ namespace MyApp.Views {
     private readonly MainButton? _buttonSave;
     private readonly MainButton? _buttonClose;
     
-    public Settings(){
-      
+    public Settings(MainForm mainForm){
+      _mainForm = mainForm;
       var config = ConfigManager.LoadConfig();
 
       _keyController = new KeyController(this);

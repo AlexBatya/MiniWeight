@@ -15,16 +15,6 @@ namespace MyApp.Controllers {
       Application.Exit();
     }
 
-    public void OpenSettings(object sender, EventArgs e){
-      var settings = new Settings(); 
-      settings.Show();
-    }
-
-    public void OpenTransportation(object sender, EventArgs e){
-      var transportation = new Transportation(); 
-      transportation.Show();
-    }
-
     public void OpenAbout(object sender, EventArgs e){
       var about = new About(); 
       about.Show();
