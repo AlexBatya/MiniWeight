@@ -24,9 +24,11 @@ namespace MyApp.Views {
       _mainForm = mainForm;
       _keyController = new KeyController(this);
       _inputAll = new Input(config.TransportationAll.ToString()); 
-      _inputZiro = new Input("0"); 
+      _inputZiro = new Input("1"); 
       _inputWeight = new Input(config.TransportationWeight.ToString());
-      _transpZiro = new MainButton("Колебровка нуля"); 
+      _transpZiro = new MainButton("Колебровка нуля", (e, sender) => {
+        CulculateZiro();
+      }); 
 
       _transpAll= new MainButton("Колебровка шкалы", (e, sender) => {
         CulculateAll();
@@ -55,7 +57,7 @@ namespace MyApp.Views {
         int? requestedWeight = _mainForm.GetController().RequestWeight();
 
         if (requestedWeight.HasValue && requestedWeight.Value != 0) {
-          float k = inputWeight / requestedWeight.Value;
+          float k = inputWeight / (requestedWeight.Value - float.Parse(_inputZiro.Text));
           _inputAll.UpdateInputText(k.ToString("F10")); // Округление до 2 знаков
         }
         else {
@@ -68,7 +70,21 @@ namespace MyApp.Views {
     }
 
     private void CulculateZiro(){
-      
+      if (float.TryParse(_inputWeight.Text, out float inputWeight)) {
+        int? requestedWeight = _mainForm.GetController().RequestWeight();
+        Console.WriteLine(requestedWeight);
+        if (requestedWeight.HasValue && requestedWeight.Value != 0) {
+          float c = requestedWeight.Value;
+          Console.WriteLine(c);
+          _inputZiro.UpdateInputText(c.ToString("F10")); // Округление до 2 знаков
+        }
+        else {
+          _inputZiro.UpdateInputText("Ошибка: деление на ноль или нет данных");
+        }
+      }
+      else {
+        _inputZiro.UpdateInputText("Ошибка: некорректный ввод");
+      }
     }
 
   }

@@ -11,7 +11,7 @@ namespace MyApp.Views {
       var data = JsonSerializer.Deserialize<SrcSettings>(jsonText); // Десериализация
       
       this.Text = "Терминал - Настройки"; // Заголовок окна
-      this.Size = new Size(400, 300); // Размер окна
+      this.Size = new Size(400, 250); // Размер окна
       this.StartPosition = FormStartPosition.CenterScreen; // Центрируем окно
       this.FormBorderStyle = FormBorderStyle.FixedDialog; // Фиксированное окно
       this.BackColor = Color.White; // Фон окна
@@ -26,38 +26,52 @@ namespace MyApp.Views {
       }
     }
 
-    private void InitializePosition(){
-    // Настройка таблицы с пропорциями для строк и столбцов
+    private void InitializePosition() {
+      // Настройка таблицы с пропорциями для строк и столбцов
       TableLayoutPanel tableLayoutPanel = new TableLayoutPanel {
-        RowCount = 1,
-        ColumnCount = 2,
-        Dock = DockStyle.Top,
-        AutoSize = true, // Автоматический размер по содержимому
-        AutoSizeMode = AutoSizeMode.GrowAndShrink,
+          RowCount = 5, // 5 строк (4 для Label+Input + 1 для кнопок)
+          ColumnCount = 2, // 2 колонки
+          Dock = DockStyle.Top,
+          AutoSize = true, // Автоматический размер по содержимому
+          AutoSizeMode = AutoSizeMode.GrowAndShrink,
       };
 
       // Настройка столбцов
-      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F)); // Используем 50% для каждой колонки
-      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F)); // Используем 50% для каждой колонки
+      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F)); // 30% для Label
+      tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F)); // 70% для Input
 
       // Настройка строк
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Размер первой строки 100px
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F)); // Основная строка будет занимать весь оставшийся экран
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F)); // Еще одна строка снизу
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Еще одна строка снизу
-      tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Еще одна строка снизу
+      for (int i = 0; i < 5; i++) {
+          tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Фиксированная высота строки 40px
+      }
 
       // Добавление элементов в ячейки
-      tableLayoutPanel.Controls.Add(_labelCOM, 0, 1); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_inputCOM, 1, 1); // Кнопка на основной ячейке
+      AddLabelAndInput(tableLayoutPanel, _labelCOM, _inputCOM, 0); // Первая строка
+      AddLabelAndInput(tableLayoutPanel, _labelSpeed, _inputSpeed, 1); // Вторая строка
+      AddLabelAndInput(tableLayoutPanel, _labelDiscret, _inputDiscret, 2); // Третья строка
+      AddLabelAndInput(tableLayoutPanel, _labelPollingTime, _inputPollingTime, 3); // Четвертая строка
 
-      tableLayoutPanel.Controls.Add(_labelSpeed, 0, 2); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_inputSpeed, 1, 2); // Кнопка на основной ячейке
-
-      tableLayoutPanel.Controls.Add(_buttonSave, 0, 3); // Кнопка на основной ячейке
-      tableLayoutPanel.Controls.Add(_buttonClose, 1, 3); // Кнопка на основной ячейке
+      // Кнопки
+      tableLayoutPanel.Controls.Add(_buttonSave, 0, 4); // Кнопка Save в пятой строке
+      tableLayoutPanel.Controls.Add(_buttonClose, 1, 4); // Кнопка Close в пятой строке
 
       this.Controls.Add(tableLayoutPanel);
+  }
+
+  // Метод для добавления Label и Input в TableLayoutPanel
+    private void AddLabelAndInput(TableLayoutPanel tableLayoutPanel, Label label, Control input, int row) {
+      // Настройка Label
+      label.TextAlign = ContentAlignment.MiddleLeft; // Выравнивание текста по левому краю
+      label.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Bottom; // Привязка к левому краю
+      label.AutoSize = true; // Автоматический размер по содержимому
+
+      // Настройка Input
+      input.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom; // Растягивание по ширине ячейки
+      input.Dock = DockStyle.Fill; // Заполнение всей ячейки
+
+      // Добавление элементов в таблицу
+      tableLayoutPanel.Controls.Add(label, 0, row); // Label в первой колонке
+      tableLayoutPanel.Controls.Add(input, 1, row); // Input во второй колонке
     }
 
   }

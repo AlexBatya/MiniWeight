@@ -61,6 +61,7 @@ namespace MyApp.Controllers {
       return serialPort != null && serialPort.IsOpen;
     }
 
+
     // Метод, который отправляет запрос и возвращает ответ
     public int? RequestWeight() {
       if (serialPort.IsOpen) {
@@ -96,23 +97,27 @@ namespace MyApp.Controllers {
 
           await Task.Delay(50, token); // Задержка с обработкой отмены
         }
-      } catch (OperationCanceledException) {
+      } 
+      catch (OperationCanceledException) {
         Console.WriteLine("Опрос остановлен.");
-      } catch (Exception ex) {
+      } 
+      catch (Exception ex) {
         Console.WriteLine($"Ошибка в StartPollingAsync: {ex.Message}");
       }
     }
 
     public void Tare() {
       if (serialPort.IsOpen) {
-          try {
-              serialPort.WriteLine("TARE"); // Отправляем команду обнуления
-              Console.WriteLine("Команда TARE отправлена.");
-          } catch (Exception ex) {
-              Console.WriteLine($"Ошибка отправки команды TARE: {ex.Message}");
-          }
-      } else {
-          Console.WriteLine("Ошибка: COM-порт не открыт.");
+        try {
+          serialPort.WriteLine("TARE"); // Отправляем команду обнуления
+          Console.WriteLine("Команда TARE отправлена.");
+        } 
+        catch (Exception ex) {
+          Console.WriteLine($"Ошибка отправки команды TARE: {ex.Message}");
+        }
+      } 
+      else {
+        Console.WriteLine("Ошибка: COM-порт не открыт.");
       }
     }
 
@@ -130,6 +135,17 @@ namespace MyApp.Controllers {
       }
       catch (Exception ex) {
         Console.WriteLine($"Ошибка при отправке команды: {ex.Message}");
+      }
+    }
+
+    public void SetOffset(float offset) {
+      if (serialPort != null && serialPort.IsOpen) {
+        string command = $"OFFSET {offset}\n";
+        serialPort.WriteLine(command);
+        Console.WriteLine($"Отправлена команда: {command}");
+      } 
+      else {
+        Console.WriteLine("Ошибка: COM-порт не открыт.");
       }
     }
   }
